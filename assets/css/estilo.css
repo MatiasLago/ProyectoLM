@@ -1,0 +1,197 @@
+/* ============ VARIABLES Y RESET ============ */
+:root {
+  --primary: #2c3e50;
+  --secondary: #2ecc71;
+  --dark: #2c3e50;
+  --light: #ecf0f1;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 4px rgba(20, 4, 4, 0.438);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ============ TIPOGRAFÍA Y BASE ============ */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding-top: 90px; /* Compensa navbar fijo */
+}
+
+h1, h2, h3, h4, h5 {
+  color: var(--primary);
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+/* ============ LAYOUT GENERAL ============ */
+.container-section {
+  margin-bottom: 3rem;
+}
+
+/* ============ NAVBAR ============ */
+.navbar {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  min-height: 80px;
+  background-color: var(--dark);
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+  z-index: 1030;
+}
+
+.navbar-brand img {
+  height: 40px;
+  transition: var(--transition);
+}
+
+.navbar-brand:hover img {
+  transform: scale(1.05);
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.5rem 1rem;
+  color: var(--light);
+  transition: var(--transition);
+  font-size: 1.1rem;
+}
+
+.nav-link:hover {
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+.nav-link.active {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background-color: var(--white);
+  border-radius: 3px;
+}
+
+/* ============ HERO SECTION ============ */
+.hero {
+  background-color: #f8f9fa;
+  padding: 3rem 0;
+  margin-bottom: 2rem;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+}
+
+/* ============ COMPONENTES REUTILIZABLES ============ */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+.card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============ FORMULARIOS ============ */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-bottom: 8px;
+}
+
+form input,
+form textarea {
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: var(--dark);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: var(--transition);
+}
+
+form button:hover {
+  background-color: #1a242f;
+}
+
+.success-message { color: green; }
+.error-message { color: red; }
+
+/* ============ FOOTER ============ */
+footer {
+  background-color: var(--dark);
+  color: var(--white);
+  padding: 2rem 0;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .navbar {
+    min-height: 70px;
+  }
+
+  .navbar-brand img {
+    height: 35px;
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+}
