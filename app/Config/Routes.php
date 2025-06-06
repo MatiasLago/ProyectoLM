@@ -31,6 +31,7 @@ $routes->get('/signup', 'Home::signup');
 //  Autenticación (Login y Registro)
 
 $routes->get('/login', 'LoginController::index');
+//$routes->post('/enviarLogin', ('LoginController::auth'));
 $routes->post('/auth', 'LoginController::auth');
 $routes->post('/logout', 'LoginController::logout');
 
@@ -43,6 +44,9 @@ $routes->post('/enviar-form', 'RegistroController::formValidation');
 $routes->get('/Perfil', 'Logica::perfil_index', ['filter' => 'authUser']);
 $routes->get('/usuario/editar/(:num)', 'Logica::editU/$1', ['filter' => 'authUser']);
 $routes->post('/updateUsuario', 'Logica::updateUsuario', ['filter' => 'authUser']);
+$routes->get('/perfil', 'Home::perfil', ['filter' => 'auth']);
+$routes->get('/usuarios', 'Logica::listadoU_index', ['filter' => 'authAdmin']);
+$routes->get('/comprar', 'Cart::comprar', ['filter' => 'user']);
 
 //  Carrito y Compras (Cart)
 

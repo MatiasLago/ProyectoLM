@@ -30,7 +30,7 @@ Iniciar Sesión
 
         <p class="signup-link">
             ¿No tienes una cuenta? 
-            <a href="<?= base_url('/Signup') ?>">Registrate aquí</a>
+            <a href="<?= base_url('/registro') ?>">Registrate aquí</a>
         </p>
     </form>
 </div>

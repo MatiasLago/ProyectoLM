@@ -5,13 +5,17 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
 
-class Auth implements FilterInterface
+class UserFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
         $session = session();
         if (!$session->get('loggedIn') || $session->get('baja') == 1) {
             return redirect()->to('/login')->with('msg', 'Debes iniciar sesión');
+        }
+
+        if ($session->get('perfilID') != 2) {
+            return redirect()->to('/')->with('msg', 'Solo usuarios pueden acceder');
         }
     }
 
