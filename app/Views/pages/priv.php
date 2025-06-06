@@ -1,5 +1,7 @@
 
-<?=$header?>
+<?= $this->extend('layouts/plantilla') ?>
+
+<?= $this->section('content') ?>
 <div class="center-container">
     <div class="terms-container">
         <main class="terms-and-conditions">
@@ -44,4 +46,4 @@
     </div>
 </div>
 
-<?=$footer?>
+<?= $this->endSection() ?>

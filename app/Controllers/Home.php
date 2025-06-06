@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\Usuarios_model;
 use App\Models\consultaModel;
+use App\Models\Productos;
+
+
 class Home extends BaseController
 {
     public function principal()
@@ -15,19 +19,16 @@ class Home extends BaseController
         return view('pages/nosotros');
     }
 
-   /* public function productos()
-    {
-        return view('pages/productos');
-    }
-        */
-
     public function contacto()
     {
         return view('pages/contacto');
     }
-    public function registrarse(){
+
+    public function registrarse()
+    {
         return view('back/registrarse');
     }
+
     public function comercializacion()
     {
         return view('pages/comercializacion');
@@ -38,13 +39,19 @@ class Home extends BaseController
         return view('pages/terminos');
     }
 
-    public function catalogo(){
-        return view('pages/catalogo');
+    public function catalogo()
+    {
+        $productosModel = new Productos();
+        $data['productos'] = $productosModel->where('activado', 1)->findAll();
+
+        return view('pages/catalogo', $data);
     }
+
     public function login()
     {
-        return view('back/login'); // Muestra la vista con el ícono
+        return view('back/login');
     }
+
     public function verificar()
     {
         $model = new Usuarios_model();
@@ -65,10 +72,8 @@ class Home extends BaseController
         }
     }
 
-        public function Perfil(){
-        $datos['header'] = view ('components/header');
-        $datos['footer'] = view ('components/footer');
-        
-        return view('Pages/perfil',$datos);
+    public function perfil()
+    {
+        return view('pages/perfil');
     }
 }

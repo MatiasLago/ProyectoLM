@@ -9,9 +9,9 @@ class LoginController extends BaseController
     {
         helper(['form','url']);
         $dato['titulo']='login'; 
-        echo view('components/header', $dato);
-        echo view('Pages/login');
-        echo view('components/footer',$dato);
+        echo view('partials/header', $dato);
+        echo view('pages/login');
+        echo view('partials/footer',$dato);
         
     } 
 
@@ -67,8 +67,6 @@ class LoginController extends BaseController
       } 
     
   }
-
-
 
     public function logout()
     {

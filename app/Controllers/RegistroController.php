@@ -14,10 +14,10 @@ class RegistroController extends BaseController{
 
     public function create(){
         $datos['Titulo'] = 'Registro' ;
-        $datos['header'] = view ('components/header');
-        $datos['footer'] = view ('components/footer');
+        $datos['header'] = view ('partials/header');
+        $datos['footer'] = view ('partials/footer');
         
-
+        return view('Pages/signup', $datos);
     }
 
     public function formValidation(){
@@ -34,8 +34,8 @@ class RegistroController extends BaseController{
         if(!$input){
 
             $datos['titulo'] = 'Registro';
-            $datos['header'] = view ('components/header');
-            $datos['footer'] = view ('components/footer');
+            $datos['header'] = view ('partials/header');
+            $datos['footer'] = view ('partials/footer');
           
             return view('Pages/signup',$datos,['validation' => $this->validator]);
             //return view('Pages/signup');

@@ -1,55 +1,84 @@
-<div class="fondo-gestores">
-    <div class="panel-product-add-container">
-        <h2 class="panel-product-add-title">Agregar Producto</h2>
-        <?php if (session()->getFlashdata('error')): ?>
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <?= session()->getFlashdata('error') ?>
-            </div>
-        <?php endif; ?>
+<?= $this->extend('layouts/plantilla') ?>
 
-        <?php if (!empty($mensaje)): ?>
-            <div class="alert alert-success">
-                <?= $mensaje ?>
-            </div>
-        <?php endif; ?>
+<?= $this->section('titulo') ?>
+Alta de Productos
+<?= $this->endSection() ?>
 
-        <form class="panel-product-add-form" action="<?= base_url('/guardarProducto') ?>" method="post">
-            <div class="panel-form-group">
-                <label for="panel-product-name">Nombre:</label>
-                <input type="text" name="nombre" id="panel-product-name" required>
-            </div>
-            <div class="panel-form-group">
-                <label for="panel-product-description">Descripción:</label>
-                <textarea name="descripcion" id="panel-product-description" rows="4" required></textarea>
-            </div>
-            <div class="panel-form-group">
-                <label for="panel-product-price">Precio:</label>
-                <input type="number" name="precio" id="panel-product-price" step="0.01" required>
-            </div>
-            <div class="panel-form-group">
-                <label for="panel-product-stock">Stock:</label>
-                <input type="number" name="stock" id="panel-product-stock" required>
-            </div>
-            <div class="panel-form-group">
-                <label for="panel-product-category">Categoría:</label>
-                <select name="categoriaID" id="panel-product-category" required>
-                    <option value="1">Panel</option>
-                    <option value="2">Regulador</option>
-                    <option value="3">Inversor</option>
-                </select>
-            </div>
-            <div class="panel-form-group">
-                <label for="panel-product-image">Imagen:</label>
-                <input type="file" name="img" id="panel-product-image" accept="image/*">
-            </div>
-            <div class="panel-form-group">
-                <label for="panel-product-activated">Activado:</label>
-                <select name="activado" id="panel-product-activated" required>
-                    <option value="0">Desactivado</option>
-                    <option value="1">Activado</option>
-                </select>
-            </div>
-            <button type="submit" class="panel-submit-button">Agregar Producto</button>
-        </form>
+<?= $this->section('content') ?>
+
+<div class="container mt-1 mb-1 d-flex justify-content-center">
+  <div class="card" style="width:75%;">
+    <div class="card-header text-center">
+      <h2>Alta de Productos</h2>
     </div>
+
+    <?php if (!empty(session()->getFlashdata('fail'))): ?>
+      <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+    <?php endif; ?>
+    <?php if (!empty(session()->getFlashdata('success'))): ?>
+      <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
+    <?php endif; ?>
+
+    <?php $validation = \Config\Services::validation(); ?>
+
+    <form action="<?= base_url('/enviar-prod'); ?>" method="post" enctype="multipart/form-data">
+      <div class="card-body">
+
+        <div class="mb-2">
+          <label for="nombre_prod" class="form-label">Producto</label>
+          <input class="form-control" type="text" name="nombre_prod" id="nombre_prod" value="<?= set_value('nombre_prod'); ?>" placeholder="Nombre del producto" autofocus>
+          <?php if ($validation->getError("nombre_prod")): ?>
+            <div class="alert alert-danger mt-2"><?= $validation->getError("nombre_prod"); ?></div>
+          <?php endif; ?>
+        </div>
+
+        <div class="mb-2">
+          <select class="form-control" name="categoria" id="categoria">
+            <option value="0">Seleccionar Categoría</option>
+            <?php foreach ($categorias as $categoria): ?>
+              <option value="<?= $categoria['id']; ?>">
+                <?= $categoria['id'] . ". " . $categoria['description']; ?>
+              </option>
+            <?php endforeach; ?>
+          </select>
+          <?php if ($validation->getError('categoria')): ?>
+            <div class="alert alert-danger mt-2"><?= $validation->getError('categoria'); ?></div>
+          <?php endif; ?>
+        </div>
+
+        <div class="mb-2">
+          <label for="precio" class="form-label">Precio de Costo</label>
+          <input class="form-control" type="text" name="precio" id="precio" value="<?= set_value('precio'); ?>">
+          <?php if ($validation->getError('precio')): ?>
+            <div class="alert alert-danger mt-2"><?= $validation->getError('precio'); ?></div>
+          <?php endif; ?>
+        </div>
+
+        <div class="mb-2">
+          <label for="precio_vta" class="form-label">Precio de Venta</label>
+          <input class="form-control" type="text" name="precio_vta" id="precio_vta" value="<?= set_value('precio_vta'); ?>">
+          <?php if ($validation->getError('precio_vta')): ?>
+            <div class="alert alert-danger mt-2"><?= $validation->getError('precio_vta'); ?></div>
+          <?php endif; ?>
+        </div>
+
+        <div class="mb-2">
+          <label for="stock" class="form-label">Stock</label>
+          <input class="form-control" type="text" name="stock" id="stock" value="<?= set_value('stock'); ?>">
+          <?php if ($validation->getError('stock')): ?>
+            <div class="alert alert-danger mt-2"><?= $validation->getError('stock'); ?></div>
+          <?php endif; ?>
+        </div>
+
+        <div class="mb-2">
+          <label for="img" class="form-label">Nombre del archivo de imagen (sin subir)</label>
+          <input class="form-control" type="text" name="img" id="img" value="<?= set_value('img'); ?>">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Cargar Producto</button>
+      </div>
+    </form>
+  </div>
 </div>
+
+<?= $this->endSection() ?>
