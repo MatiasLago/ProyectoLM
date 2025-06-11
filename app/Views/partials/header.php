@@ -26,7 +26,7 @@
               <a class="nav-link" href="<?= base_url('/consultas') ?>">Consultas</a>
             <?php endif; ?>
 
-            <a class="nav-link" href="<?= base_url('/Perfil') ?>">Perfil</a>
+            <a class="nav-link" href="<?= base_url('/perfil') ?>">Perfil</a>
 
             <form action="<?= base_url('/logout') ?>" method="post" class="d-inline">
               <button class="btn btn-outline-light btn-sm ms-2" type="submit">Cerrar Sesión</button>

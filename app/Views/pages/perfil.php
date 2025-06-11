@@ -21,11 +21,11 @@ Perfil
         <p><strong>Correo Electrónico:</strong> <?= $session->get("mail") ?></p>
         <p><strong>Nombre de usuario:</strong> <?= $session->get("usuario") ?></p>
 
-        <div class="perfil-acciones">
-          <a href="<?= base_url('editarUsuario/' . $id) ?>">Editar Perfil</a>
-          <?php if ($session->get("perfilID") == 2): ?>
-            <a href="<?= base_url('/listadoVentasU/' . $id) ?>">Ver Compras</a>
-          <?php endif; ?>
+        <a class="btn btn-outline-primary me-2" href="<?= base_url('editarUsuario/' . $id) ?>">Editar Perfil</a>
+        <?php if ($session->get("perfilID") == 2): ?>
+          <a class="btn btn-outline-success" href="<?= base_url('listadodeVentas/' . $id) ?>">Ver Compras</a>
+        <?php endif; ?>
+
         </div>
       </div>
 

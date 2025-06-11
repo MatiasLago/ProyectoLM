@@ -41,10 +41,9 @@ $routes->post('/enviar-form', 'RegistroController::formValidation');
 
 //  Perfil de Usuario
 
-$routes->get('/Perfil', 'Logica::perfil_index', ['filter' => 'authUser']);
+$routes->get('/perfil', 'Home::perfil', ['filter' => 'auth']);
 $routes->get('/usuario/editar/(:num)', 'Logica::editU/$1', ['filter' => 'authUser']);
 $routes->post('/updateUsuario', 'Logica::updateUsuario', ['filter' => 'authUser']);
-$routes->get('/perfil', 'Home::perfil', ['filter' => 'auth']);
 $routes->get('/usuarios', 'Logica::listadoU_index', ['filter' => 'authAdmin']);
 $routes->get('/comprar', 'Cart::comprar', ['filter' => 'user']);
 
@@ -58,6 +57,7 @@ $routes->get('/comprar', 'Cart::comprar', ['filter' => 'authUser']);
 $routes->post('/confirmar-compra', 'Cart::confirmarCompra', ['filter' => 'authUser']);
 $routes->get('/comprobante', 'Cart::comprobante', ['filter' => 'authUser']);
 
+
 //  Gestión de Productos (solo admin)
 
 $routes->get('/productos/listar', 'Logica::listadoP_index', ['filter' => 'authUser']);
@@ -68,6 +68,9 @@ $routes->post('/update-prod', 'Logica::updateProducto', ['filter' => 'authUser']
 $routes->get('/producto/baja/(:num)', 'Logica::bajaP/$1', ['filter' => 'authUser']);
 $routes->get('/producto/alta/(:num)', 'Logica::altaP/$1', ['filter' => 'authUser']);
 $routes->get('/producto/eliminar/(:num)', 'Logica::deleteP/$1', ['filter' => 'authUser']);
+
+$routes->get('/catalogo/categoria/(:num)', 'Home::catalogoPorCategoria/$1');
+
 
 //  Gestión de Usuarios (solo admin)
 

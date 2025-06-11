@@ -21,4 +21,11 @@ class Productos extends Model{
         $this->update($id, $data);
     }
 
+    public function getByCategoria($categoriaID)
+    {
+        return $this->where('categoriaID', $categoriaID)
+                    ->where('activado', 1)
+                    ->findAll();
+    }
+
 }

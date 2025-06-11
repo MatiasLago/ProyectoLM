@@ -47,9 +47,22 @@ class Home extends BaseController
         return view('pages/catalogo', $data);
     }
 
+    public function catalogoPorCategoria($categoriaID)
+{
+    $productosModel = new \App\Models\Productos();
+    $data['productos'] = $productosModel->getByCategoria($categoriaID);
+
+    return view('pages/catalogo', $data);
+}
+
+
     public function login()
     {
         return view('back/login');
+    }
+    public function perfil()
+    {
+        return view('pages/perfil');
     }
 
     public function verificar()
@@ -72,8 +85,4 @@ class Home extends BaseController
         }
     }
 
-    public function perfil()
-    {
-        return view('pages/perfil');
-    }
 }

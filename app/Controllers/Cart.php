@@ -24,7 +24,7 @@ class Cart extends BaseController
     public function view()
     {
         $cart = $this->cart->contents();
-        $model = new Products();
+        $model = new Productos();
         $productos = [];
 
         foreach ($cart as $item) {
@@ -43,25 +43,24 @@ class Cart extends BaseController
 
     public function add()
     {
+        $cart = \Config\Services::cart(); // ✅ solución directa
+
         $request = \Config\Services::request();
-        $qty = $request->getPost('qty');
+        $qty = $request->getPost('qty') ?: 1;
 
-        // Si el campo 'qty' está vacío o no está presente en el formulario, establecerlo en 1
-        if (empty($qty)) {
-            $qty = 1;
-        }
-        $data = array(
-            'id'      => $request->getPost('id'),
-            'qty'     => $qty,
-            'price'   => $request->getPost('price'),
-            'name'    => $request->getPost('name'),
+        $data = [
+            'id'          => $request->getPost('id'),
+            'qty'         => $qty,
+            'price'       => $request->getPost('price'),
+            'name'        => $request->getPost('name'),
             'categoriaID' => $request->getPost('categoriaID')
-        );
+        ];
 
-        $this->cart->insert($data);
+        $cart->insert($data);
 
-        return redirect()->to(base_url('listado_productos/'. $data['categoriaID']));
+        return redirect()->to(base_url('listadoP/' . $data['categoriaID']));
     }
+
 
     public function update()
     {
@@ -89,7 +88,7 @@ class Cart extends BaseController
     $productId = $cartItem['id'];
 
     // Obtener la cantidad disponible del producto
-    $productModel = new Products();
+    $productModel = new Productos();
     $stockDisponible = $productModel->getCantidad($productId);
 
     // Verificar si la cantidad deseada es mayor que la cantidad disponible
@@ -137,7 +136,7 @@ class Cart extends BaseController
 
     public function comprar()
     {
-        $productModel = new Products();
+        $productModel = new Productos();
         $session = session();
         $cart = \Config\Services::cart();
         $db = \Config\Database::connect();
@@ -283,7 +282,7 @@ class Cart extends BaseController
     $OrderDetail = new OrderDetail();
     $Envio = new Envio();
     $User = new Users(); // Supongamos que tienes un modelo User para los datos del usuario
-    $Product = new Products(); // Supongamos que tienes un modelo Products para los datos del producto
+    $Product = new Productos(); // Supongamos que tienes un modelo Products para los datos del producto
 
     $order = $Order->find($orderId);
     $orderDetails = $OrderDetail->where('orderID', $orderId)->findAll();
