@@ -20,9 +20,9 @@
           <?php if (session()->get('usuario')): ?>
             <?php if (session()->get('perfilID') == 1): ?>
               <a class="nav-link" href="<?= base_url('/usuarios') ?>">Usuarios</a>
-              <a class="nav-link" href="<?= base_url('/productos/listar') ?>">Gestión Productos</a>
-              <a class="nav-link" href="<?= base_url('/ventas') ?>">Ventas</a>
-              <a class="nav-link" href="<?= base_url('/envios') ?>">Envíos</a>
+              <a class="nav-link" href="<?= base_url('/listadoP') ?>">Gestión Productos</a>
+              <a class="nav-link" href="<?= base_url('/listadodeventas') ?>">Ventas</a>
+              <a class="nav-link" href="<?= base_url('/listadoenvios') ?>">Envíos</a>
               <a class="nav-link" href="<?= base_url('/consultas') ?>">Consultas</a>
             <?php endif; ?>
 

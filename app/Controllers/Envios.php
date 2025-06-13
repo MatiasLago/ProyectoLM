@@ -12,8 +12,8 @@ class Envios extends BaseController
         $datos['envios'] = $envios->orderBy('id', 'ASC')->findAll();
 
 
-        echo view('components/header');
+        echo view('partials/header');
         echo view('Pages/listadoenvios', $datos);
-        echo view('components/footer');
+        echo view('partials/footer');
     }
 }

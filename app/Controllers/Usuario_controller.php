@@ -14,7 +14,8 @@ class Usuario_controller extends BaseController
 {
     $model = new Usuarios_model();
     $data['usuarios'] = $model->findAll();
-    echo view('layouts/plantilla');
+    echo view('layouts/plantilla', $data);
+    
    
 }
 
@@ -22,7 +23,7 @@ class Usuario_controller extends BaseController
     {
         $dato['titulo'] = 'Crear Usuario';
         echo view('layouts/plantilla', $dato);
-        echo view('back/registro');
+        echo view('back/registrarse');
     }    
     
 
@@ -43,7 +44,7 @@ class Usuario_controller extends BaseController
         if (!$input) {
             $dato['titulo'] = 'Registrarse ';
             echo view('layouts/plantilla', $dato);
-            echo view('back/registro', ['validation' => $this->validator]);
+            echo view('back/registrarse', ['validation' => $this->validator]);
         } else {
             $formModel->save([
                 'Nombre' => $this->request->getVar('nombre'),
@@ -53,7 +54,7 @@ class Usuario_controller extends BaseController
                 'Pass'  => password_hash($this->request->getVar('pass'), PASSWORD_DEFAULT)
             ]);
             session()->setFlashdata('success','Usuario registrado con exito');
-            return $this->response->redirect(site_url('/registro'));
+            return $this->response->redirect(site_url('/registrarse'));
         }
     }
 

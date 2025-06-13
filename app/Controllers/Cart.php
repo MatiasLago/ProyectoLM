@@ -36,9 +36,9 @@ class Cart extends BaseController
 
         $data['productos'] = $productos;
         $data['cart'] = $this->cart;
-        echo view('components/header');
+        echo view('partials/header');
         echo view('Products/carrito', $data);
-        echo view('components/footer');
+        echo view('partials/footer');
     }
 
     public function add()
@@ -129,9 +129,9 @@ class Cart extends BaseController
             return redirect()->back()->with('mensaje', 'El carrito esta vacio');
         }
 
-        echo view('components/header');
+        echo view('partials/header');
         echo view('Products/compra', ['productos' => $carrito, 'cart' => $cart]);
-        echo view('components/footer');
+        echo view('partials/footer');
     }
 
     public function comprar()
@@ -196,9 +196,9 @@ class Cart extends BaseController
                 'cart' => $cart,
                 'errors' => $this->validator->getErrors() // Pasar los errores a la vista
             ];
-            echo view('components/header');
+            echo view('partials/header');
             echo view('Products/compra', $data); // Cargar la vista de compra nuevamente
-            echo view('components/footer');
+            echo view('partials/footer');
 
             return;
         }
@@ -301,9 +301,9 @@ class Cart extends BaseController
         'user' => $user, // Incluimos los datos del usuario en la vista
     ];
 
-    echo view('components/header');
+    echo view('partials/header');
     echo view('Products/comprobante', $data);
-    echo view('components/footer');
+    echo view('partials/footer');
 }
 
 

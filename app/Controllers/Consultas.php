@@ -10,9 +10,9 @@ class Consultas extends BaseController
         helper(['form','url']);
         $dato['titulo'] = 'consultas'; 
         
-        echo view('components/header', $dato);
-        echo view('Pages/contact');
-        echo view('components/footer', $dato);
+        echo view('partials/header', $dato);
+        echo view('Pages/listado_consult');
+        echo view('partials/footer', $dato);
     }
 
     public function guardar_consulta(){
@@ -59,9 +59,9 @@ class Consultas extends BaseController
         $data['pager'] = $consultaModel->pager;
 
         // Pasar los datos a las vistas
-        echo view('components/header', $data);
+        echo view('partials/header', $data);
         echo view('Pages/listado_consult', $data);
-        echo view('components/footer', $data);
+        echo view('partials/footer', $data);
     }
 
     public function eliminarConsulta($id)

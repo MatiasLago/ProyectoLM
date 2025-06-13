@@ -54,7 +54,7 @@ class RegistroController extends BaseController{
             ]);
 
             session()->setFlashdata('success', 'Usuario registrado con Exito');
-            return $this->response->redirect('Login');
+            return $this->response->redirect('login');
             
 
         }

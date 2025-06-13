@@ -24,9 +24,9 @@ class Orders extends BaseController
             $venta['tipoPago_descripcion'] = $pago['descripcion'];
         }
 
-        echo view('components/header');
-        echo view('Pages/listadoventas', $datos);
-        echo view('components/footer');
+        echo view('partials/header');
+        echo view('pages/listadodeventas', $datos);
+        echo view('partials/footer');
     }
 
     public function ventasUser($id)
@@ -44,9 +44,9 @@ class Orders extends BaseController
             $venta['tipoPago_descripcion'] = $pago['descripcion'];
         }
 
-        echo view('components/header');
-        echo view('Pages/listadoventas', $datos);
-        echo view('components/footer');
+        echo view('partials/header');
+        echo view('pages/listadodeventas', $datos);
+        echo view('partials/footer');
     }
 
 }

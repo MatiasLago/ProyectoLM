@@ -9,9 +9,9 @@ class Logica extends BaseController
     public function perfil_index(){
         helper(['form','url']);
         $dato['titulo']='perfil'; 
-        echo view('components/header', $dato);
-        echo view('Pages/perfil');
-        echo view('components/footer',$dato);
+        echo view('partials/header', $dato);
+        echo view('pages/perfil');
+        echo view('partials/footer',$dato);
     }
 
 
@@ -24,16 +24,17 @@ class Logica extends BaseController
     $datos['titulo'] = 'listadoP';
 
 
-    $productModel = new Products();
+    $productModel = new \App\Models\Productos();
+
 
     $products = $productModel->orderBy('id', 'ASC')->findAll();
 
     $datos['products'] = $products;
 
     // Pasar los datos a las vistas
-    echo view('components/header', $datos);
-    echo view('Pages/listadoP', $datos); // Asegúrate de pasar $datos aquí
-    echo view('components/footer', $datos);
+    echo view('partials/header', $datos);
+    echo view('pages/listadoP', $datos); // Asegúrate de pasar $datos aquí
+    echo view('partials/footer', $datos);
 }
 
    
@@ -41,13 +42,13 @@ class Logica extends BaseController
         $session = session();
         $data['mensaje'] = $session->getFlashdata('mensaje');
         $data['error'] = $session->getFlashdata('error');
-        echo view('components/header');
+        echo view('partials/header');
         echo view('Products/agregarProducto',$data);
-        echo view('components/footer');
+        echo view('partials/footer');
     }
 
     public function guardarProducto() {
-        $productModel = new Products();
+        $productModel = new \App\Models\Productos();
     
         $validation = \Config\Services::validation();
 
@@ -110,21 +111,21 @@ class Logica extends BaseController
         $session = session();
         $data['mensaje'] = $session->getFlashdata('mensaje');
         $data['error'] = $session->getFlashdata('error');
-        $productModel = new Products();
+        $productModel = new \App\Models\Productos();
         $producto = $productModel->find($id); // Cambia el nombre de la variable aquí
     
         // Agregar el producto a los datos existentes en lugar de sobrescribirlos
         $data['product'] = $producto;
     
-        echo view('components/header',$data);
+        echo view('partials/header',$data);
         echo view('Products/editarProducto', $data);    
-        echo view('components/footer',$data);
+        echo view('partials/footer',$data);
     }
     
     
     public function update()
     {
-        $productModel = new Products();
+        $productModel = new \App\Models\Productos();
         $validation = \Config\Services::validation();
         $productId = $this->request->getPost('id');
         
@@ -178,7 +179,7 @@ class Logica extends BaseController
     public function eliminarProducto($id)
     {
         // Instanciar el modelo de productos
-        $productModel = new Products();
+          $productModel = new \App\Models\Productos();
 
         // Obtener el producto por su ID
         $producto = $productModel->find($id);
@@ -200,7 +201,7 @@ class Logica extends BaseController
     }
 
     public function bajaproducto($id){
-        $productModel = new Products();
+         $productModel = new \App\Models\Productos();
 
         // Obtener el producto por su ID
         $producto = $productModel->find($id);
@@ -223,7 +224,7 @@ class Logica extends BaseController
     }
 
     public function altaproducto($id){
-        $productModel = new Products();
+        $productModel = new products();
 
         // Obtener el producto por su ID
         $producto = $productModel->find($id);
@@ -263,9 +264,9 @@ class Logica extends BaseController
         $data['pager'] = $userModel->pager; // Pasar el objeto Pager a la vista
 
         // Pasar los datos a las vistas
-        echo view('components/header', $data);
-        echo view('Pages/listadoPerfiles', $data);
-        echo view('components/footer', $data);
+        echo view('partials/header', $data);
+        echo view('pages/listadoPerfiles', $data);
+        echo view('partials/footer', $data);
     }
     
 
@@ -281,9 +282,9 @@ class Logica extends BaseController
         // Agregar el producto a los datos existentes en lugar de sobrescribirlos
         $data['user'] = $userModel;
     
-        echo view('components/header');
+        echo view('partials/header');
         echo view('Usuarios/editarUsuario', $data);    
-        echo view('components/footer');
+        echo view('partials/footer');
     }
     
     
