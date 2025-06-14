@@ -6,50 +6,50 @@ Listado de Envíos
 
 <?= $this->section('content') ?>
 
-<div class="container-ventas">
+<div class="container mt-5">
   <?php $session = session(); ?>
-  <div class="bg-listar">
-    <div class="ventas-table-title">
-      <?php if ($session->get('perfilID') == 1): ?>
-        <h1>Envios Realizados</h1>
-      <?php else: ?>
-        <h1>Tus Envios</h1>
-      <?php endif; ?>
-    </div>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="fw-bold">
+      <?= $session->get('perfilID') == 1 ? 'Envíos Realizados' : 'Tus Envíos' ?>
+    </h2>
 
     <?php if ($session->get('perfilID') == 1): ?>
-      <div class="ventas-table-button">
-        <a href="<?= base_url('/listadodeventas') ?>">Ver Ventas</a>
-      </div>
+      <a href="<?= base_url('/listadodeventas') ?>" class="btn btn-outline-primary">
+        Ver Ventas
+      </a>
     <?php endif; ?>
+  </div>
 
-    <table class="table-ventas-hechas">
-      <thead>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover text-center align-middle">
+      <thead class="table-dark">
         <tr>
-          <th scope="ventas-col">ID Orden</th>
-          <th scope="ventas-col">Direccion</th>
-          <th scope="ventas-col">Ciudad</th>
-          <th scope="ventas-col">Provincia</th>
-          <th scope="ventas-col">Codigo Postal</th>
-          <th scope="ventas-col">Metodo Envio</th>
-          <th scope="ventas-col">Precio Envio</th>
+          <th>ID Orden</th>
+          <th>Dirección</th>
+          <th>Ciudad</th>
+          <th>Provincia</th>
+          <th>Código Postal</th>
+          <th>Método Envío</th>
+          <th>Precio Envío</th>
         </tr>
       </thead>
       <tbody>
         <?php foreach ($envios as $envio): ?>
           <tr>
-            <th scope="ventas-row"><?= $envio['orderID'] ?></th>
-            <td><?= $envio['direccion'] ?></td>
-            <td><?= $envio['ciudad'] ?></td>
-            <td><?= $envio['provincia'] ?></td>
-            <td><?= $envio['codPostal'] ?></td>
-            <td><?= $envio['metodoEnvio'] ?></td>
-            <td><?= $envio['precioEnvio'] ?></td>
+            <td><?= $envio['orderID'] ?></td>
+            <td><?= esc($envio['direccion']) ?></td>
+            <td><?= esc($envio['ciudad']) ?></td>
+            <td><?= esc($envio['provincia']) ?></td>
+            <td><?= esc($envio['codPostal']) ?></td>
+            <td><?= esc($envio['metodoEnvio']) ?></td>
+            <td>$<?= number_format($envio['precioEnvio'], 2, ',', '.') ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>
     </table>
   </div>
 </div>
+
 
 <?= $this->endSection() ?>

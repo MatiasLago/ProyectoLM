@@ -1,17 +1,17 @@
 <?= $this->extend('layouts/plantilla') ?>
 <?= $this->section('titulo') ?>
-Listado de Perfiles
+Listado de Usuarios
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
 
 <div class="fondo-gestores">
   <div class="profile-list-container">
-    <h2 class="profile-list-title">Listado de Perfiles</h2>
+    <h2 class="profile-list-title">Listado de Usuarios</h2>
     <?php $session = session(); $id = $session->get('userID'); ?>
 
     <div class="table-wrapper">
-      <table class="profile-table">
+      <table class="table table-bordered table-hover text-center align-middle">
         <thead>
           <tr>
             <th>ID</th>
@@ -39,12 +39,12 @@ Listado de Perfiles
                   <td perfil-label="Estado"><?= $user['baja'] == 1 ? 'DE BAJA' : 'ACTIVO' ?></td>
                   <td perfil-label="Loggeado"><?= $user['loggedIn'] == 1 ? 'LOGEADO' : 'NO ESTA LOGEADO' ?></td>
                   <td perfil-label="Acciones">
-                    <a href="<?= base_url('editarUsuario/' . $user['userID']) ?>" class="profile-edit-link">Editar</a>
-                    <a href="<?= base_url('eliminarUsuario/' . $user['userID']) ?>" class="profile-delete-link">Eliminar</a>
+                    <a href="<?= base_url('editarUsuario/' . $user['userID']) ?>" class="btn btn-sm btn-primary me-1">Editar</a>
+                    <a href="<?= base_url('eliminarUsuario/' . $user['userID']) ?>" class="btn btn-sm btn-danger me-1">Eliminar</a>
                     <?php if ($user['baja'] == 1): ?>
-                      <a href="<?= base_url('altaUsuario/' . $user['userID']) ?>" class="profile-delete-link">Dar Alta</a>
+                      <a href="<?= base_url('altaUsuario/' . $user['userID']) ?>" class="btn btn-sm btn-success">Dar Alta</a>
                     <?php else: ?>
-                      <a href="<?= base_url('bajaUsuario/' . $user['userID']) ?>" class="profile-delete-link">Dar Baja</a>
+                      <a href="<?= base_url('bajaUsuario/' . $user['userID']) ?>" class="btn btn-sm btn-warning">Dar Baja</a>
                     <?php endif; ?>
                   </td>
                 </tr>

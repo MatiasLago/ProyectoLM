@@ -35,12 +35,12 @@ Listado de Productos
             <td><?= $product['stock']; ?></td>
             <td><?= $product['activado']; ?></td>
             <td>
-              <a href="<?= base_url('editarProducto/' . $product['id']); ?>">Editar</a>
-              <a href="<?= base_url('/eliminarProducto/' . $product['id']); ?>">Eliminar</a>
+              <a href="<?= base_url('editarProducto/' . $product['id']); ?>"class="btn btn-sm btn-primary me-1">Editar</a>
+              <a href="<?= base_url('eliminarProducto/' . $product['id']); ?>" class="btn btn-sm btn-danger me-1">Eliminar</a>
               <?php if ($product['activado'] == 1): ?>
-                <a href="<?= base_url('bajaProducto/' . $product['id']); ?>">Dar Baja</a>
+                <a href="<?= base_url('bajaProducto/' . $product['id']); ?>"class="btn btn-sm btn-warning">Dar Baja</a>
               <?php else: ?>
-                <a href="<?= base_url('altaProducto/' . $product['id']); ?>">Dar Alta</a>
+                <a href="<?= base_url('altaProducto/' . $product['id']); ?>"class="btn btn-sm btn-success">Dar Alta</a>
               <?php endif; ?>
             </td>
           </tr>
