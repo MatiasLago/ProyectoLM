@@ -19,7 +19,7 @@ Listado de Envíos
 
     <?php if ($session->get('perfilID') == 1): ?>
       <div class="ventas-table-button">
-        <a href="<?= base_url('/listadoVentas') ?>">Ver Ventas</a>
+        <a href="<?= base_url('/listadodeventas') ?>">Ver Ventas</a>
       </div>
     <?php endif; ?>
 

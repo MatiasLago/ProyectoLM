@@ -10,14 +10,14 @@ class Usuario_controller extends BaseController
         helper(['form', 'url']);
     }
 
-    public function index() //listado de usuarios
-{
-    $model = new Usuarios_model();
-    $data['usuarios'] = $model->findAll();
-    echo view('layouts/plantilla', $data);
-    
-   
-}
+    public function index()
+    {
+        $model = new \App\Models\Usuarios_model();
+        $data['users'] = $model->findAll();
+
+        return view('pages/listadoPerfiles', $data);
+    }
+
 
     public function create() //crea nuevos usuarios
     {

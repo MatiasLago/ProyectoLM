@@ -14,10 +14,7 @@ class Logica extends BaseController
         echo view('partials/footer',$dato);
     }
 
-
     // VISUALIZACION Y GESTION DE PRODUCTOS
-
-
 
   public function listadoP_index()
 {
@@ -168,7 +165,7 @@ class Logica extends BaseController
         // Actualizar el producto en la base de datos
         if ($productModel->update($productId, $data)) {
             // Redirigir a alguna página de éxito
-            return redirect()->to('/listarP')->with('mensajeEditado', 'Producto actualizado exitosamente');
+            return redirect()->to('/listadoP')->with('mensajeEditado', 'Producto actualizado exitosamente');
         } else {
             // Si la actualización falla, redirigir de vuelta al formulario de edición con un mensaje de error
             return redirect()->back()->with('errorEditado', 'Hubo un problema al actualizar el producto');
@@ -193,7 +190,7 @@ class Logica extends BaseController
         // Intentar eliminar el producto
         if ($productModel->delete($id)) {
             // Éxito al eliminar, redireccionar con un mensaje de éxito
-            return redirect()->to('/listarP')->with('mensajeBorrado', 'Producto eliminado exitosamente');
+            return redirect()->to('/listadoP')->with('mensajeBorrado', 'Producto eliminado exitosamente');
         } else {
             // Falla al eliminar, redireccionar con un mensaje de error
             return redirect()->back()->with('errorBorrado', 'Hubo un problema al eliminar el producto');
@@ -216,7 +213,7 @@ class Logica extends BaseController
         $producto["activado"]=0;
         if ($productModel->update($id,$producto)) {
             // Éxito al eliminar, redireccionar con un mensaje de éxito
-            return redirect()->to('/listarP')->with('mensajeBorrado', 'Producto activado exitosamente');
+            return redirect()->to('/listadoP')->with('mensajeBorrado', 'Producto activado exitosamente');
         } else {
             // Falla al eliminar, redireccionar con un mensaje de error
             return redirect()->back()->with('errorBorrado', 'Hubo un problema al dar baja el producto');
@@ -224,7 +221,8 @@ class Logica extends BaseController
     }
 
     public function altaproducto($id){
-        $productModel = new products();
+        $productModel = new \App\Models\Productos();
+
 
         // Obtener el producto por su ID
         $producto = $productModel->find($id);
@@ -239,7 +237,7 @@ class Logica extends BaseController
         $producto["activado"]=1;
         if ($productModel->update($id,$producto)) {
             // Éxito al eliminar, redireccionar con un mensaje de éxito
-            return redirect()->to('/listarP')->with('mensajeBorrado', 'Producto de baja exitosamente');
+            return redirect()->to('/listadoP')->with('mensajeBorrado', 'Producto de baja exitosamente');
         } else {
             // Falla al eliminar, redireccionar con un mensaje de error
             return redirect()->back()->with('errorBorrado', 'Hubo un problema al activar el producto');
@@ -323,7 +321,7 @@ class Logica extends BaseController
         // Actualizar el usuario en la base de datos
         if ($userModel->update($userModelID, $user)) {
             // Redirigir a alguna página de éxito
-            return redirect()->to('/listadoPerfiles')->with('mensajeEditado', 'Perfil actualizado!');
+            return redirect()->to('/usuarios')->with('mensajeEditado', 'Perfil actualizado!');
         } else {
             // Si la actualización falla, redirigir de vuelta al formulario de edición con un mensaje de error
             return redirect()->back()->with('errorEditado', 'Hubo un problema al actualizar el perfil');
@@ -341,7 +339,7 @@ class Logica extends BaseController
         $user->marcarComoBaja($userID);
 
         // Redireccionar a la lista de usuarios con mensaje de éxito
-        return redirect()->to('/listadoPerfiles')->with('success', 'Usuario marcado como de baja exitosamente.');
+        return redirect()->to('/usuarios')->with('success', 'Usuario marcado como de baja exitosamente.');
     
     }
 
@@ -352,7 +350,7 @@ class Logica extends BaseController
         $user->marcarComoAlta($id);
 
         // Redireccionar a la lista de usuarios con mensaje de éxito
-        return redirect()->to('/listadoPerfiles')->with('success', 'Usuario marcado como de baja exitosamente.');
+        return redirect()->to('/usuarios')->with('success', 'Usuario marcado como de baja exitosamente.');
     }
 
     public function eliminarUsuario($id)
@@ -372,7 +370,7 @@ class Logica extends BaseController
         // Intentar eliminar el producto
         if ($userModel->delete($id)) {
             // Éxito al eliminar, redireccionar con un mensaje de éxito
-            return redirect()->to('/listadoPerfiles')->with('mensajeBorrado', 'Perfil eliminado exitosamente');
+            return redirect()->to('/usuarios')->with('mensajeBorrado', 'Perfil eliminado exitosamente');
         } else {
             // Falla al eliminar, redireccionar con un mensaje de error
             return redirect()->back()->with('errorBorrado', 'Hubo un problema al eliminar el perfil');

@@ -62,7 +62,9 @@ $routes->get('/comprobante', 'Cart::comprobante', ['filter' => 'authUser']);
 //  Gestión de Productos (solo admin)
 
 $routes->get('/listadoP', 'Logica::listadoP_index', ['filter' => 'authUser']);
-$routes->get('/listadoPerfiles', 'Logica::altaP', ['filter' => 'authUser']);
+$routes->get('/listadoPerfiles', 'Logica::listadoPerfiles_index', ['filter' => 'authUser']);
+
+
 $routes->post('/enviar-prod', 'Logica::insertarProducto', ['filter' => 'authUser']);
 $routes->get('/producto/editar/(:num)', 'Logica::editP/$1', ['filter' => 'authUser']);
 $routes->post('/update-prod', 'Logica::updateProducto', ['filter' => 'authUser']);
@@ -91,9 +93,12 @@ $routes->get('/eliminarProducto/(:num)', 'Logica::eliminarProducto/$1',['filter'
 //  Gestión de Usuarios (solo admin)
 
 $routes->get('/usuarios', 'Usuario_controller::index', ['filter' => 'authUser']);
-$routes->get('/usuarios/eliminar/(:num)', 'Logica::deleteU/$1', ['filter' => 'authUser']);
-$routes->get('/usuarios/baja/(:num)', 'Logica::bajaU/$1', ['filter' => 'authUser']);
-$routes->get('/usuarios/alta/(:num)', 'Logica::altaU/$1', ['filter' => 'authUser']);
+$routes->get('/eliminarUsuario/(:num)', 'Logica::eliminarUsuario/$1', ['filter' => 'authAdmin']);
+$routes->get('/bajaUsuario/(:num)', 'Logica::bajaUsuario/$1', ['filter' => 'authAdmin']);
+
+$routes->get('/altaUsuario/(:num)', 'Logica::altaUsuario/$1', ['filter' => 'authUser']);
+$routes->get('/editarUsuario/(:num)', 'Logica::editarUsuario/$1', ['filter' => 'authAdmin']);
+
 
 //  Consultas
 

@@ -1,5 +1,4 @@
 <?= $this->extend('layouts/plantilla') ?>
-
 <?= $this->section('titulo') ?>
 Listado de Perfiles
 <?= $this->endSection() ?>
@@ -51,13 +50,13 @@ Listado de Perfiles
                 </tr>
               <?php endif; ?>
             <?php endforeach; ?>
+          <?php else: ?>
+            <tr>
+              <td colspan="9" class="text-center">No hay usuarios registrados.</td>
+            </tr>
           <?php endif; ?>
         </tbody>
       </table>
-    </div>
-
-    <div class="pagination-container">
-      <?= $pager->links() ?>
     </div>
   </div>
 </div>
