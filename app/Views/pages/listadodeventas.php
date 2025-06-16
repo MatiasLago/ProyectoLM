@@ -44,7 +44,7 @@ Listado de Ventas
             <td><?= $venta['tarjeta']; ?></td>
             <td>
               <a href="<?= base_url('compra/comprobante/' . $venta['id']) ?>" class="btn btn-sm btn-secondary">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file"></i> Visualizar
               </a>
             </td>
           </tr>

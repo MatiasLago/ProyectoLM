@@ -56,7 +56,8 @@ $routes->post('/actualizar-carrito', 'Cart::update');
 $routes->get('/eliminar-carrito/(:any)', 'Cart::remove/$1');
 $routes->get('/comprar', 'Cart::comprar', ['filter' => 'authUser']);
 $routes->post('/confirmar-compra', 'Cart::confirmarCompra', ['filter' => 'authUser']);
-$routes->get('/comprobante', 'Cart::comprobante', ['filter' => 'authUser']);
+$routes->get('/compra/comprobante/(:num)', 'Cart::comprobante/$1', ['filter' => 'authUser']);
+
 
 
 //  Gestión de Productos (solo admin)

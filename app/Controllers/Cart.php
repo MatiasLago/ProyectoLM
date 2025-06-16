@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\Products;
+use App\Models\Productos;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Envio;
@@ -285,6 +285,7 @@ class Cart extends BaseController
     $Product = new Productos(); // Supongamos que tienes un modelo Products para los datos del producto
 
     $order = $Order->find($orderId);
+    
     $orderDetails = $OrderDetail->where('orderID', $orderId)->findAll();
     $envio = $Envio->where('orderID', $orderId)->first();
     $user = $User->find($order['userID']); // Obtenemos los datos del usuario
