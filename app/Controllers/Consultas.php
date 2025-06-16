@@ -36,31 +36,20 @@ class Consultas extends BaseController
         if (!$validation->withRequest($this->request)->run()) {
             // Establecer mensaje de error en la sesión con los mensajes de validación
             session()->setFlashdata('error', $validation->listErrors());
-            return redirect()->to('/contact')->withInput();
+            return redirect()->to('/contacto')->withInput();
         }
         
       
         $consultModel->insert($data);
-        return redirect()->to('/contact')->with('mensaje', 'Consulta enviada exitosamente');
+        return redirect()->to('/contacto')->with('mensaje', 'Consulta enviada exitosamente');
     }
 
-    public function listar_consultas(){
-        $data['titulo'] = 'Listado de Consultas';
-
-        // Configurar la paginación
-        $consultaModel = new Consulta();
-        $perPage = 3; // Número de resultados por página
-        $currentPage = $this->request->getVar('page') ? (int) $this->request->getVar('page') : 1;
-
-        // Obtener las consultas paginadas
-        $consultas = $consultaModel->orderBy('id', 'ASC')->paginate($perPage);
-
-        $data['consulta'] = $consultas;
+    public function listar_consultas() {
+        $consultaModel = new \App\Models\Consulta();
+        $data['consultas'] = $consultaModel->orderBy('id', 'ASC')->paginate(10); // o el número que quieras
         $data['pager'] = $consultaModel->pager;
-
-        // Pasar los datos a las vistas
         echo view('partials/header', $data);
-        echo view('Pages/listado_consult', $data);
+        echo view('pages/listado_consult', $data); 
         echo view('partials/footer', $data);
     }
 

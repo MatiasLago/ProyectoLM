@@ -39,11 +39,15 @@ $routes->post('/logout', 'LoginController::logout');
 $routes->get('/registro', 'RegistroController::create');
 $routes->post('/enviar-form', 'RegistroController::formValidation');
 
+// contacto 
+$routes->post('/enviar-consulta', 'Consultas::guardar_consulta');
+
+
 
 //  Perfil de Usuario
 
 $routes->get('/perfil', 'Home::perfil', ['filter' => 'auth']);
-$routes->get('/usuario/editar/(:num)', 'Logica::editU/$1', ['filter' => 'authUser']);
+$routes->get('/editarUsuario/(:num)', 'Logica::editarUsuario/$1', ['filter' => 'authUser']);
 $routes->post('/updateUsuario', 'Logica::updateUsuario', ['filter' => 'authUser']);
 $routes->get('/usuarios', 'Usuario_controller::index', ['filter' => 'authUser']);
 $routes->get('/comprar', 'Cart::comprar', ['filter' => 'user']);
@@ -52,11 +56,13 @@ $routes->get('/comprar', 'Cart::comprar', ['filter' => 'user']);
 
 $routes->get('/carrito', 'Cart::index');
 $routes->post('/agregar-carrito', 'Cart::add');
-$routes->post('/actualizar-carrito', 'Cart::update');
-$routes->get('/eliminar-carrito/(:any)', 'Cart::remove/$1');
+$routes->post('/carrito/update', 'Cart::update');
+$routes->post('/carrito/remove/(:any)', 'Cart::remove/$1');
 $routes->get('/comprar', 'Cart::comprar', ['filter' => 'authUser']);
-$routes->post('/confirmar-compra', 'Cart::confirmarCompra', ['filter' => 'authUser']);
+$routes->post('/compra/confirmar', 'Cart::comprar', ['filter' => 'authUser']);
+
 $routes->get('/compra/comprobante/(:num)', 'Cart::comprobante/$1', ['filter' => 'authUser']);
+
 
 
 
@@ -103,9 +109,11 @@ $routes->get('/editarUsuario/(:num)', 'Logica::editarUsuario/$1', ['filter' => '
 
 //  Consultas
 
-$routes->get('/consultas', 'Consultas::index', ['filter' => 'authUser']);
+$routes->get('/consultas', 'Consultas::listar_consultas', ['filter' => 'authAdmin']);
 $routes->post('/guardar-consulta', 'Consultas::guardar');
 $routes->get('/eliminar-consulta/(:num)', 'Consultas::eliminar/$1', ['filter' => 'authUser']);
+//$routes->get('/consultas', 'Consultas::listado_consult', ['filter' => 'authAdmin']);
+
 
 //  Ventas y Envíos (admin y usuarios)
 

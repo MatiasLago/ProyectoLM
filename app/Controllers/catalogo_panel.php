@@ -30,7 +30,7 @@
                                     <?php if ($session->get('loggedIn')) : ?>
                                         <button class="add-to-cart-button" type="submit"><i class="fa fa-shopping-cart"></i></button>
                                     <?php else : ?>
-                                        <a href="<?= base_url('/login') ?>" class="btn-comprar">Lo Quiero!</a>
+                                        <a href="<?= base_url('/login') ?>" class="btn-comprar">Agregar Carrito</a>
                                     <?php endif ?>
                                 </form>
                             </div>

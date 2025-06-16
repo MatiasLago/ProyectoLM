@@ -21,7 +21,7 @@ class Cart extends BaseController
         $this->cart = \Config\Services::cart();
     }
 
-    public function view()
+    public function index()
     {
         $cart = $this->cart->contents();
         $model = new Productos();
@@ -42,24 +42,26 @@ class Cart extends BaseController
     }
 
     public function add()
-    {
-        $cart = \Config\Services::cart(); // ✅ solución directa
+        {
+            $request = \Config\Services::request();
+            $qty = $request->getPost('qty');
 
-        $request = \Config\Services::request();
-        $qty = $request->getPost('qty') ?: 1;
+            // Si el campo 'qty' está vacío o no está presente en el formulario, establecerlo en 1
+            if (empty($qty)) {
+                $qty = 1;
+            }
+            $data = array(
+                'id'      => $request->getPost('id'),
+                'qty'     => $qty,
+                'price'   => $request->getPost('price'),
+                'name'    => $request->getPost('name'),
+                'categoriaID' => $request->getPost('categoriaID')
+            );
 
-        $data = [
-            'id'          => $request->getPost('id'),
-            'qty'         => $qty,
-            'price'       => $request->getPost('price'),
-            'name'        => $request->getPost('name'),
-            'categoriaID' => $request->getPost('categoriaID')
-        ];
-
-        $cart->insert($data);
-
-        return redirect()->to(base_url('listadoP/' . $data['categoriaID']));
-    }
+            $this->cart->insert($data);
+            return redirect()->to(base_url('carrito'));
+           //return redirect()->to(base_url('listado_productos/'. $data['categoriaID']));
+        }
 
 
     public function update()

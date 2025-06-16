@@ -36,12 +36,19 @@ class Logica extends BaseController
 
    
     public function agregar_producto() {
+        helper(['form', 'url']);
         $session = session();
         $data['mensaje'] = $session->getFlashdata('mensaje');
         $data['error'] = $session->getFlashdata('error');
+
+        $categoriaModel = new \App\Models\Productos();
+        $data['categorias'] = $categoriaModel->findAll();
+
+
         echo view('partials/header');
         echo view('Products/agregarProducto',$data);
         echo view('partials/footer');
+
     }
 
     public function guardarProducto() {
@@ -320,17 +327,16 @@ class Logica extends BaseController
 
         // Actualizar el usuario en la base de datos
         if ($userModel->update($userModelID, $user)) {
-            // Redirigir a alguna página de éxito
-            return redirect()->to('/usuarios')->with('mensajeEditado', 'Perfil actualizado!');
-        } else {
-            // Si la actualización falla, redirigir de vuelta al formulario de edición con un mensaje de error
-            return redirect()->back()->with('errorEditado', 'Hubo un problema al actualizar el perfil');
+            // Si es admin, redirige al listado de usuarios
+            if (session()->get('perfilID') == 1) {
+                return redirect()->to('/usuarios')->with('mensajeEditado', 'Perfil actualizado!');
+            } else {
+                // Si es usuario común, redirige a su perfil
+                return redirect()->to('/perfil')->with('mensajeEditado', 'Perfil actualizado!');
+            }
         }
-    } else {
-        // Si no se proporciona un ID válido, redirigir de vuelta con un mensaje de error
-        return redirect()->back()->with('errorEditado', 'ID de usuario no válido');
     }
-    }
+}
 
     public function bajaUsuario($userID){
         $user = new Users();

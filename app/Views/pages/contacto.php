@@ -17,28 +17,39 @@
         <p><strong>Horario:</strong> Lunes a Viernes, 8:00 - 17:00 hs</p>
     </div>
 
-    <div class="col-md-6">
-        <h2>Formulario de Contacto</h2>
-        <p>Envíanos tu consulta directamente:</p>
-            
-            <div class="mb-3">
-                <label for="formNombre" class="form-label">Nombre:</label>
-                <input type="text" class="form-control" id="formNombre" name="nombre" required>
+    <?php if (session()->getFlashdata('error')): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?= session()->getFlashdata('error') ?>
+                
             </div>
+        <?php endif; ?>
 
-            <div class="mb-3">
-                <label for="formEmail" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="formEmail" name="email" required>
+    <?php if (!empty($error)): ?>
+                <div class="alert alert-danger">
+                    <?= $error ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!empty(session()->getFlashdata('mensaje'))): ?>
+            <div class="alert alert-success">
+                <?= session()->getFlashdata('mensaje') ?>
             </div>
-
-            <div class="mb-3">
-                <label for="formMensaje" class="form-label">Mensaje:</label>
-                <textarea class="form-control" id="formMensaje" name="mensaje" rows="5" required></textarea>
+        <?php endif; ?>
+        <form action="<?= base_url('/enviar-consulta') ?>" method="post">
+            <div class="form-contact">
+                <label for="name">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
             </div>
-
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <div class="form-contact">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="mail" name="mail" placeholder="example@example.com" required>
+            </div>
+            <div class="form-contact">
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí" required></textarea>
+            </div>
+            <button type="submit">Enviar</button>
         </form>
     </div>
-</div>
 
 <?= $this->endSection() ?>

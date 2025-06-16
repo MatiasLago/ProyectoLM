@@ -32,13 +32,13 @@ Listado de Consultas
             </tr>
           </thead>
           <tbody>
-            <?php foreach ($consulta as $consult): ?>
+            <?php foreach ($consultas as $consult): ?>
               <tr>
                 <td><?= $consult['id']; ?></td>
                 <td><?= $consult['nombre']; ?></td>
                 <td><?= $consult['mail']; ?></td>
                 <td><?= $consult['mensaje']; ?></td>
-                <td><a href="<?= base_url('/eliminarConsulta/' . $consult['id']); ?>">Eliminar</a></td>
+                <td><a href="<?= base_url('eliminarConsulta/' . $consult['id']); ?>">Eliminar</a></td>
               </tr>
             <?php endforeach; ?>
           </tbody>

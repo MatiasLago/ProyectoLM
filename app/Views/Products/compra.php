@@ -32,7 +32,7 @@
       </tbody>
     </table>
 
-    <form class="form-compra" action="<?= base_url('/compra/finalizar') ?>" method="post">
+    <form class="form-compra" action="<?= base_url('/compra/confirmar') ?>" method="post">
       <h3>Datos de Envío y Pago</h3>
       <?= csrf_field() ?>
 
