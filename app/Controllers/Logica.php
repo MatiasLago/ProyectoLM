@@ -102,7 +102,7 @@ class Logica extends BaseController
         } else {
             // Guardar el producto
             if ($productModel->insert($data)) {
-                return redirect()->to('/listarP')->with('mensaje', 'Producto agregado exitosamente');
+                return redirect()->to('/listadoP')->with('mensaje', 'Producto agregado exitosamente');
             } else {
                 return redirect()->back()->with('error', 'Hubo un problema al agregar el producto');
             }

@@ -68,16 +68,9 @@ class LoginController extends BaseController
     
   }
 
-    public function logout()
-    {
+    public function logout(){
         $session = session();
-        $model = new Users();
-        $data =  $model->where('userID', $session->userID);
-        $userID = $data->userID;
-        $model->update($userID, ['loggedIn' => 0]);
         $session->destroy();
         return redirect()->to('/');
-    }
-
-    
 } 
+}

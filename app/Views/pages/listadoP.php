@@ -6,6 +6,12 @@ Listado de Productos
 
 <?= $this->section('content') ?>
 
+<div class="d-flex justify-content-end mb-3">
+    <a href="<?= base_url('agregarProducto') ?>" class="btn btn-success">
+        <i class="fa fa-plus"></i> Agregar Producto
+    </a>
+</div>
+
 <table class="table">
   <thead>
     <tr>
