@@ -91,7 +91,9 @@ $routes->get('/editarUsuario/(:num)', 'Logica::editarUsuario/$1', ['filter' => '
 //  Consultas
 $routes->get('/consultas', 'Consultas::listar_consultas', ['filter' => 'authAdmin']);
 $routes->post('/guardar-consulta', 'Consultas::guardar');
-$routes->get('/eliminar-consulta/(:num)', 'Consultas::eliminar/$1', ['filter' => 'authUser']);
+$routes->get('/eliminarConsulta/(:num)', 'Consultas::eliminarConsulta/$1', ['filter' => 'authAdmin']);
+$routes->get('/listado_consult', 'Consultas::listar_consultas', ['filter' => 'authAdmin']);
+
 
 //  Ventas y Envíos (admin y usuarios)
 $routes->get('/ventas', 'Orders::ventasAdmin', ['filter' => 'authUser']);

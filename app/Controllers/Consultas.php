@@ -44,6 +44,7 @@ class Consultas extends BaseController
         return redirect()->to('/contacto')->with('mensaje', 'Consulta enviada exitosamente');
     }
 
+
     public function listar_consultas() {
         $consultaModel = new \App\Models\Consulta();
         $data['consultas'] = $consultaModel->orderBy('id', 'ASC')->paginate(10); // o el número que quieras
@@ -70,7 +71,7 @@ class Consultas extends BaseController
         // Intentar eliminar la consulta
         if ($consultModel->delete($id)) {
             // Éxito al eliminar, redireccionar con un mensaje de éxito
-            return redirect()->to('/listadoConsultas')->with('mensajeBorrado', 'Consulta eliminada exitosamente');
+            return redirect()->to('/listado_consult')->with('mensajeBorrado', 'Consulta eliminada exitosamente');
         } else {
             // Falla al eliminar, redireccionar con un mensaje de error
             return redirect()->back()->with('errorBorrado', 'Hubo un problema al eliminar la consulta');

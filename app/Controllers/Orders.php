@@ -16,13 +16,14 @@ class Orders extends BaseController
         $usuario = new Users();
         $tipoPago = new TipoPago();
 
-        foreach ($datos['ventas'] as &$venta) {
-            $email = $usuario->find($venta['userID']);
-            $venta['userEmail'] = $email['mail'];
+    foreach ($datos['ventas'] as &$venta) {
+        $email = $usuario->find($venta['userID']);
+        $venta['userEmail'] = $email ? $email['mail'] : '(Usuario eliminado)';
 
-            $pago = $tipoPago->find($venta['tipoPagoId']);
-            $venta['tipoPago_descripcion'] = $pago['descripcion'];
-        }
+        $pago = $tipoPago->find($venta['tipoPagoId']);
+        $venta['tipoPago_descripcion'] = $pago ? $pago['descripcion'] : '(Desconocido)';
+    }
+
 
         echo view('partials/header');
         echo view('pages/listadodeventas', $datos);

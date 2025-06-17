@@ -35,21 +35,24 @@
                 <?= session()->getFlashdata('mensaje') ?>
             </div>
         <?php endif; ?>
-        <form action="<?= base_url('/enviar-consulta') ?>" method="post">
-            <div class="form-contact">
-                <label for="name">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-            </div>
-            <div class="form-contact">
-                <label for="email">Correo electrónico:</label>
-                <input type="email" id="mail" name="mail" placeholder="example@example.com" required>
-            </div>
-            <div class="form-contact">
-                <label for="message">Mensaje:</label>
-                <textarea id="message" name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí" required></textarea>
-            </div>
-            <button type="submit">Enviar</button>
+        <form action="<?= base_url('/enviar-consulta') ?>" method="post" class="p-4 rounded shadow-sm bg-white" style="max-width:480px;margin:auto;">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div class="mb-3">
+            <label for="mail" class="form-label">Correo electrónico:</label>
+            <input type="email" class="form-control" id="mail" name="mail" placeholder="example@example.com" required>
+        </div>
+        <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje:</label>
+            <textarea class="form-control" id="mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí" required></textarea>
+        </div>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+        </div>
         </form>
+
     </div>
 
 <?= $this->endSection() ?>

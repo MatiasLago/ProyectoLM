@@ -21,30 +21,37 @@ Listado de Consultas
     <?php if ($perfilID == 1): ?>
       <div class="category-container panel-category">
         <h2>Consultas</h2>
-        <table class="product-table panel-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Mail</th>
-              <th>Mensaje</th>
-              <th>Borrar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($consultas as $consult): ?>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead class="table-dark">
               <tr>
-                <td><?= $consult['id']; ?></td>
-                <td><?= $consult['nombre']; ?></td>
-                <td><?= $consult['mail']; ?></td>
-                <td><?= $consult['mensaje']; ?></td>
-                <td><a href="<?= base_url('eliminarConsulta/' . $consult['id']); ?>">Eliminar</a></td>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Mail</th>
+                <th>Mensaje</th>
+                <th>Borrar</th>
               </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <?php foreach ($consultas as $consult): ?>
+                <tr>
+                  <td><?= $consult['id']; ?></td>
+                  <td><?= $consult['nombre']; ?></td>
+                  <td><?= $consult['mail']; ?></td>
+                  <td><?= $consult['mensaje']; ?></td>
+                  <td>
+                    <a href="<?= base_url('eliminarConsulta/' . $consult['id']); ?>" class="btn btn-danger btn-sm">
+                      Eliminar
+                    </a>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </div>
       </div>
-    <?php endif; ?>
+  <?php endif; ?>
+
   </div>
 
   <div class="pagination-container">
