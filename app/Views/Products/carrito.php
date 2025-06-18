@@ -25,7 +25,7 @@
               <img src="<?= $img_url ?>" alt="<?= $p['nombre'] ?>" class="product-image">
               <div class="product-info">
                 <h3><?= $p['nombre'] ?></h3>
-                <p>Precio: $<?= $p['precio'] ?></p>
+                <p>Precio: <?= '$' . number_format($p['precio'], 2, ',', '.') ?></p>
               </div>
             </div>
 
@@ -48,7 +48,10 @@
 
     <div class="cart-actions">
       <?php if (!empty($productos)): ?>
-        <p class="total-amount">Total: $ <span id="carrito-total"><?= number_format($cart->total(), 2) ?></span></p>
+        <p class="total-amount">Total: <p class="total-amount"> Total: <span id="carrito-total">
+            <?= '$' . number_format($cart->total(), 2, ',', '.') ?>
+          </span>
+        </p>
         <form action="<?= base_url('compra/confirmar') ?>" method="post">
           <button class="proceed-to-checkout">Proceder a Comprar</button>
         </form>

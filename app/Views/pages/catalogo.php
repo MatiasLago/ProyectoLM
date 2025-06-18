@@ -24,7 +24,9 @@ Catálogo
           <div class="card-body">
             <h5 class="card-title"><?= esc($producto['nombre']) ?></h5>
             <p class="card-text"><?= esc($producto['descripcion']) ?></p>
-            <p class="card-text"><strong>$<?= esc($producto['precio']) ?></strong></p>
+            <p class="card-text"><strong>
+            <?= '$' . number_format($producto['precio'], 2, ',', '.') ?>
+            </strong></p>
 
             <?php if (session()->get('usuario')): ?>
               <form action="<?= base_url('/agregar-carrito') ?>" method="post">

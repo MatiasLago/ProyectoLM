@@ -33,7 +33,7 @@ Listado de Productos
             <td><?= $product['id']; ?></td>
             <td><?= $product['nombre']; ?></td>
             <td><?= $product['descripcion']; ?></td>
-            <td><?= $product['precio']; ?></td>
+            <td><?= '$' . number_format($product['precio'], 2, ',', '.'); ?></td>
             <td>
               <?php $img_url = base_url($product['img']); ?>
               <img src="<?= $img_url; ?>" alt="<?= $product['nombre']; ?>" width="100">
@@ -66,7 +66,7 @@ Listado de Productos
             <td><?= $product['id']; ?></td>
             <td><?= $product['nombre']; ?></td>
             <td><?= $product['descripcion']; ?></td>
-            <td><?= $product['precio']; ?></td>
+            <td><?= '$' . number_format($product['precio'], 2, ',', '.'); ?></td>
             <td>
               <?php $img_url = base_url($product['img']); ?>
               <img src="<?= $img_url; ?>" alt="<?= $product['nombre']; ?>" width="100">
@@ -99,7 +99,7 @@ Listado de Productos
               <td><?= $product['id']; ?></td>
               <td><?= $product['nombre']; ?></td>
               <td><?= $product['descripcion']; ?></td>
-              <td><?= $product['precio']; ?></td>
+              <td><?= '$' . number_format($product['precio'], 2, ',', '.'); ?></td>
               <td>
                 <?php $img_url = base_url($product['img']); ?>
                 <img src="<?= $img_url; ?>" alt="<?= $product['nombre']; ?>" width="100">
