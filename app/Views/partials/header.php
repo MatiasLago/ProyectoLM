@@ -28,6 +28,14 @@
 
             <a class="nav-link" href="<?= base_url('/perfil') ?>">Perfil</a>
 
+          <?php if (session()->get('loggedIn')): ?>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= base_url('/carrito') ?>">
+                <i class="fa fa-shopping-cart"></i> Carrito
+              </a>
+            </li>
+          <?php endif; ?>
+          
             <form action="<?= base_url('/logout') ?>" method="post" class="d-inline">
               <button class="btn btn-outline-light btn-sm ms-2" type="submit">Cerrar Sesión</button>
             </form>
