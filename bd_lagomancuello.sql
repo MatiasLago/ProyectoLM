@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2025 a las 04:59:07
+-- Tiempo de generación: 25-06-2025 a las 17:03:06
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -84,9 +84,9 @@ CREATE TABLE `envio` (
 --
 
 INSERT INTO `envio` (`id`, `orderID`, `direccion`, `ciudad`, `provincia`, `codPostal`, `metodoEnvio`, `precioEnvio`, `fecha`) VALUES
-(8, 7, 'junin 741', 'Corrientes', 'Corrientes', '3400', '1', 0.00, '2025-06-16'),
 (9, 8, 'junin 741', 'Corrientes', 'Corrientes', '3400', '1', 0.00, '2025-06-17'),
-(10, 9, 'junin 741', 'Corrientes', 'Corrientes', '3400', '2', 0.00, '2025-06-17');
+(10, 9, 'junin 741', 'Corrientes', 'Corrientes', '3400', '2', 0.00, '2025-06-17'),
+(11, 10, 'junin 741', 'Corrientes', 'Corrientes', '3400', '2', 0.00, '2025-06-19');
 
 -- --------------------------------------------------------
 
@@ -108,9 +108,9 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id`, `userID`, `fecha`, `total_venta`, `tipoPagoId`, `tarjeta`) VALUES
-(7, 17, '2025-06-16 21:53:00', 230000.00, 1, '1234567891234567'),
 (8, 21, '2025-06-17 02:29:43', 120000.00, 1, '1234567891234567'),
-(9, 21, '2025-06-17 02:57:48', 120000.00, 2, '1234567891234567');
+(9, 21, '2025-06-17 02:57:48', 120000.00, 2, '1234567891234567'),
+(10, 21, '2025-06-19 13:05:54', 120000.00, 1, '1234567891234567');
 
 -- --------------------------------------------------------
 
@@ -131,7 +131,8 @@ CREATE TABLE `order_details` (
 --
 
 INSERT INTO `order_details` (`id`, `orderID`, `productID`, `price`, `cantidad`) VALUES
-(24, 9, 1, 120000.00, 1);
+(24, 9, 1, 120000.00, 1),
+(25, 10, 1, 120000.00, 1);
 
 -- --------------------------------------------------------
 
@@ -174,7 +175,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `nombre`, `descripcion`, `precio`, `img`, `stock`, `categoriaID`, `activado`) VALUES
-(1, 'Panel Solar 100W', 'Panel Solar Enertik Monocristalino 100W', 120000, 'assets/img/panelSolar100w.jpg', 18, 1, 1),
+(1, 'Panel Solar 100W', 'Panel Solar Enertik Monocristalino 100W', 120000, 'assets/img/panelSolar100w.jpg', 17, 2, 1),
 (2, 'Panel Solar 290W', 'Panel Solar Policristalino 290W 60 celdas', 230000, 'assets/img/panelSolar290W.jpg', 46, 1, 1),
 (3, 'Panel Solar 200W', 'Panel Solar Monocristalino Tecnología PERC HC 200w 120 Celdas', 12300, 'assets/img/panelSolar200W.jpg', 50, 1, 1),
 (5, 'Panel Solar 380W', 'Panel Solar Monocristalino Tecnología PERC HC 380w 120 Celdas', 140000, 'assets/img/panelSolar380W.jpg', 15, 1, 1),
@@ -308,19 +309,19 @@ ALTER TABLE `consultas`
 -- AUTO_INCREMENT de la tabla `envio`
 --
 ALTER TABLE `envio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
