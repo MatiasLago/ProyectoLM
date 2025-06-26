@@ -40,7 +40,7 @@ Listado de Usuarios
                   <td perfil-label="Loggeado"><?= $user['loggedIn'] == 1 ? 'LOGEADO' : 'NO ESTA LOGEADO' ?></td>
                   <td perfil-label="Acciones">
                     <a href="<?= base_url('editarUsuario/' . $user['userID']) ?>" class="btn btn-sm btn-primary me-1">Editar</a>
-                    <a href="<?= base_url('eliminarUsuario/' . $user['userID']) ?>" class="btn btn-sm btn-danger me-1">Eliminar</a>
+                   
                     <?php if ($user['baja'] == 1): ?>
                       <a href="<?= base_url('altaUsuario/' . $user['userID']) ?>" class="btn btn-sm btn-success">Dar Alta</a>
                     <?php else: ?>

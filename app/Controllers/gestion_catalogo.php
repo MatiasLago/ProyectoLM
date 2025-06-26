@@ -2,14 +2,14 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
-use App\Models\Products;
+use App\Models\Productos;
 
 class gestion_catalogo extends BaseController {
     public function listado_productos($prodID) {
         $datos['titulo'] = 'listadoProductos';
         
         // Cargar el modelo
-        $product = new Products();
+        $product = new Productos();
         
         // Configuración de la paginación
         $perPage = 3; // Número de productos por página

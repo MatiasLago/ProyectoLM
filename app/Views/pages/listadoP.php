@@ -42,7 +42,7 @@ Listado de Productos
             <td><?= $product['activado']; ?></td>
             <td>
               <a href="<?= base_url('editarProducto/' . $product['id']); ?>"class="btn btn-sm btn-primary me-1">Editar</a>
-              <a href="<?= base_url('eliminarProducto/' . $product['id']); ?>" class="btn btn-sm btn-danger me-1">Eliminar</a>
+              
               <?php if ($product['activado'] == 1): ?>
                 <a href="<?= base_url('bajaProducto/' . $product['id']); ?>"class="btn btn-sm btn-warning">Dar Baja</a>
               <?php else: ?>
@@ -75,7 +75,7 @@ Listado de Productos
             <td><?= $product['activado']; ?></td>
             <td>
               <a href="<?= base_url('editarProducto/' . $product['id']); ?>"class="btn btn-sm btn-primary me-1">Editar</a>
-              <a href="<?= base_url('eliminarProducto/' . $product['id']); ?>" class="btn btn-sm btn-danger me-1">Eliminar</a>
+              
               <?php if ($product['activado'] == 1): ?>
                 <a href="<?= base_url('bajaProducto/' . $product['id']); ?>"class="btn btn-sm btn-warning">Dar Baja</a>
               <?php else: ?>
@@ -108,7 +108,7 @@ Listado de Productos
               <td><?= $product['activado']; ?></td>
               <td>
                 <a href="<?= base_url('editarProducto/' . $product['id']); ?>"class="btn btn-sm btn-primary me-1">Editar</a>
-                <a href="<?= base_url('eliminarProducto/' . $product['id']); ?>" class="btn btn-sm btn-danger me-1">Eliminar</a>
+                
                 <?php if ($product['activado'] == 1): ?>
                   <a href="<?= base_url('bajaProducto/' . $product['id']); ?>"class="btn btn-sm btn-warning">Dar Baja</a>
                 <?php else: ?>
