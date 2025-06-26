@@ -29,17 +29,24 @@ Catálogo
             </strong></p>
 
             <?php if (session()->get('usuario')): ?>
-              <form action="<?= base_url('/agregar-carrito') ?>" method="post">
-                  <input type="hidden" name="id" value="<?= $producto['id'] ?>">
-                  <input type="hidden" name="name" value="<?= $producto['nombre'] ?>">
-                  <input type="hidden" name="price" value="<?= $producto['precio'] ?>">
-                  <input type="hidden" name="categoriaID" value="<?= $producto['categoriaID'] ?>">
-                  <input type="hidden" name="qty" value="1">
-                  <button class="btn btn-primary w-100" type="submit">Agregar al carrito</button>
-              </form>
+              <?php if ($producto['stock'] > 0): ?>
+                <form action="<?= base_url('/agregar-carrito') ?>" method="post">
+                  <input type="hidden" name="productID" value="<?= $producto['id'] ?>">
+                  <button class="btn btn-primary w-100" type="submit">
+                    Agregar al carrito
+                  </button>
+                </form>
+              <?php else: ?>
+                <button class="btn btn-secondary w-100" disabled>
+                  Sin stock
+                </button>
+              <?php endif; ?>
             <?php else: ?>
-              <a href="<?= base_url('/login') ?>" class="btn btn-outline-secondary w-100">Iniciar sesión para comprar</a>
+              <a href="<?= base_url('/login') ?>" class="btn btn-outline-secondary w-100">
+                Iniciar sesión para comprar
+              </a>
             <?php endif; ?>
+
           </div>
         </div>
       </div>

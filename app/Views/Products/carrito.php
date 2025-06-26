@@ -28,8 +28,16 @@
           <div class="item-actions d-flex align-items-center">
             <form action="<?= base_url('carrito/update') ?>" method="post" class="me-2 d-flex align-items-center">
               <input type="hidden" name="rowid" value="<?= $p['rowid'] ?>">
-              <input type="number" name="qty" value="<?= $p['qty'] ?>" min="1" class="form-control qty-input me-1">
-              <button type="submit" class="btn btn-sm btn-outline-primary">OK</button>
+              <input
+                  type="number"
+                  name="qty"
+                  value="<?= $p['qty'] ?>"
+                  min="1"
+                  max="<?= $p['stock'] ?>"
+                  data-stock="<?= $p['stock'] ?>"
+                  data-prev="<?= $p['qty'] ?>"
+                  class="form-control qty-input me-1"
+                />
             </form>
             <form action="<?= base_url('carrito/remove/' . $p['rowid']) ?>" method="post">
               <?= csrf_field() ?>
@@ -55,5 +63,33 @@
     <div class="alert alert-info text-center">No hay productos en el carrito.</div>
   <?php endif; ?>
 </div>
+
+  <script>
+    document.querySelectorAll('.qty-input').forEach(input => {
+      input.addEventListener('change', function() {
+        const stock = parseInt(this.dataset.stock, 10);
+        const nueva = parseInt(this.value, 10);
+        const anterior = parseInt(this.dataset.prev, 10);
+
+        if (isNaN(nueva) || nueva < 1) {
+          // No permitimos valores < 1
+          this.value = anterior;
+          return;
+        }
+
+        //si el usuario quiere comprar mas unidades de las que hay dispoible, se emite el mensaje
+        if (nueva > stock) {
+          alert(`Lo siento, solo hay ${stock} unidades disponibles.`);
+          this.value = anterior;
+          return;
+        }
+
+        // Si pasa la validación, actualizamos el data-prev y enviamos el form
+        this.dataset.prev = nueva;
+        this.closest('form').submit();
+      });
+    });
+  </script>
+
 
 <?= $this->endSection() ?>
