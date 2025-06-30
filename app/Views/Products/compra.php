@@ -46,17 +46,26 @@
         </div>
       <?php endif; ?>
 
-      <label for="direccion">Dirección:</label>
-      <input type="text" id="direccion" name="direccion" placeholder="Ingrese su dirección" required>
+      <label for="tipo_pago">Direccion:</label>
+    <input type="text" name="direccion"
+          value="<?= esc(old('direccion', $user['direccion'] ?? '')) ?>" class="form-control">
 
-      <label for="ciudad">Ciudad:</label>
-      <input type="text" id="ciudad" name="ciudad" placeholder="Ingrese su ciudad" required>
+          <label for="tipo_pago">Ciudad:</label>
+    <input type="text" name="ciudad"
+          value="<?= esc(old('ciudad', $user['ciudad'] ?? '')) ?>" class="form-control">
 
-      <label for="provincia">Provincia:</label>
-      <input type="text" id="provincia" name="provincia" placeholder="Ingrese su provincia" required>
+          <label for="tipo_pago">Provincia:</label>
+    <input type="text" name="provincia"
+          value="<?= esc(old('provincia', $user['provincia'] ?? '')) ?>" class="form-control">
 
-      <label for="codPostal">Código Postal:</label>
-      <input type="text" id="codPostal" name="codPostal" placeholder="Ingrese su código postal" required>
+          <label for="tipo_pago">Codigo Postl:</label>
+    <input type="text" name="codPostal"
+          value="<?= esc(old('codPostal', $user['codpostal'] ?? '')) ?>" class="form-control">
+
+          <label for="tipo_pago">Tarjeta:</label>
+    <input type="text" name="tarjeta"
+          value="<?= esc(old('tarjeta', $user['tarjeta'] ?? '')) ?>" class="form-control" maxlength="16">
+
 
       <label for="metodoEnvio">Método de Envío:</label>
       <select name="metodoEnvio" id="metodoEnvio" onchange="calcularCostoEnvio()">
@@ -77,9 +86,6 @@
         <option value="1">Débito</option>
         <option value="2">Crédito</option>
       </select>
-
-      <label for="tarjeta">Nro de Tarjeta:</label>
-      <input type="text" id="tarjeta" name="tarjeta" placeholder="Ingrese los 16 dígitos" required>
 
       <button type="submit" class="btn btn-success mt-3">Finalizar Compra</button>
     </form>

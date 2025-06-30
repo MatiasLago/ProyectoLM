@@ -40,6 +40,37 @@ Editar Usuario
           <input type="text" name="usuario" id="panel-user-usuario-label" value="<?= esc($user['usuario']) ?>" required>
         </div>
 
+        <div class="panel-user-form-group">
+          <label for="direccion">Dirección:</label>
+          <input type="text" name="direccion" id="direccion"
+                value="<?= esc($user['direccion'] ?? '') ?>" class="form-control">
+        </div>
+
+        <div class="panel-user-form-group">
+          <label for="ciudad">Ciudad:</label>
+          <input type="text" name="ciudad" id="ciudad"
+                value="<?= esc($user['ciudad'] ?? '') ?>" class="form-control">
+        </div>
+
+        <div class="panel-user-form-group">
+          <label for="provincia">Provincia:</label>
+          <input type="text" name="provincia" id="provincia"
+                value="<?= esc($user['provincia'] ?? '') ?>" class="form-control">
+        </div>
+
+        <div class="panel-user-form-group">
+          <label for="codpostal">Código Postal:</label>
+          <input type="text" name="codpostal" id="codpostal"
+                value="<?= esc($user['codpostal'] ?? '') ?>" class="form-control">
+        </div>
+
+        <div class="panel-user-form-group">
+          <label for="tarjeta">Nº de Tarjeta:</label>
+          <input type="text" name="tarjeta" id="tarjeta" maxlength="16"
+                value="<?= esc($user['tarjeta'] ?? '') ?>" class="form-control">
+        </div>
+
+
         <?php if ($perfilID == 1): ?>
           <div class="panel-user-form-group">
             <label for="panel-user-perfilID-label">PerfilID:</label>

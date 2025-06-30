@@ -77,6 +77,11 @@ class Usuario_controller extends BaseController
         $user['apellido'] = $this->request->getPost('apellido') ?? $user['apellido'];
         $user['mail'] = $this->request->getPost('mail') ?? $user['mail'];
         $user['usuario'] = $this->request->getPost('usuario') ?? $user['usuario'];
+        $user['direccion'] = $this->request->getPost('direccion') ?? $user['direccion'];
+        $user['ciudad']    = $this->request->getPost('ciudad')    ?? $user['ciudad'];
+        $user['provincia'] = $this->request->getPost('provincia') ?? $user['provincia'];
+        $user['codpostal'] = $this->request->getPost('codpostal') ?? $user['codpostal'];
+        $user['tarjeta']   = $this->request->getPost('tarjeta')   ?? $user['tarjeta'];
 
         // Verificar y mantener los valores actuales si los campos están vacíos en el formulario
         if ($this->request->getPost('perfilID') !== null && $this->request->getPost('perfilID') !== '') {

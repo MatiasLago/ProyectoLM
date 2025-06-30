@@ -131,8 +131,10 @@ class Cart extends BaseController
             return redirect()->back()->with('mensaje', 'El carrito esta vacio');
         }
 
+        $userData = (new \App\Models\Users())->find(session()->get('userID'));
+
         echo view('partials/header');
-        echo view('Products/compra', ['productos' => $carrito, 'cart' => $cart]);
+        echo view('Products/compra', ['productos' => $carrito, 'cart' => $cart, 'user' => $userData]);
         echo view('partials/footer');
     }
 
@@ -148,6 +150,8 @@ class Cart extends BaseController
             if (empty($carrito)) {
                 return redirect()->back()->with('mensaje', 'El carrito esta vacio');
             }
+
+            $userData = (new \App\Models\Users())->find($session->get('userID'));
     
         $validationRules = [
             'tipoPagoId' => 'required|in_list[1,2]',
@@ -199,7 +203,12 @@ class Cart extends BaseController
                 'errors' => $this->validator->getErrors() // Pasar los errores a la vista
             ];
             echo view('partials/header');
-            echo view('Products/compra', $data); // Cargar la vista de compra nuevamente
+            echo view('Products/compra', [
+        'productos'=> $carrito,
+        'cart'      => $cart,
+        'errors'    => $this->validator->getErrors(),
+        'user'      => $userData
+    ]);
             echo view('partials/footer');
 
             return;

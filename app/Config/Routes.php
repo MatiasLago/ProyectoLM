@@ -39,7 +39,7 @@ $routes->post('/enviar-consulta', 'Consultas::guardar_consulta');
 
 //  Perfil de Usuario
 $routes->get('/perfil', 'Home::perfil', ['filter' => 'auth']);
-$routes->get('/editarUsuario/(:num)', 'Logica::editarUsuario/$1', ['filter' => 'authUser']);
+$routes->get('/editarUsuario/(:num)', 'Usuario_controller::editarUsuario/$1', ['filter' => 'authUser']);
 $routes->post('/updateUsuario', 'Usuario_controller::updateUsuario', ['filter' => 'authUser']);
 $routes->get('/usuarios', 'Usuario_controller::index', ['filter' => 'authUser']);
 $routes->get('/comprar', 'Cart::comprar', ['filter' => 'user']);

@@ -30,12 +30,24 @@ Catálogo
 
             <?php if (session()->get('usuario')): ?>
               <?php if ($producto['stock'] > 0): ?>
-                <form action="<?= base_url('/agregar-carrito') ?>" method="post">
-                  <input type="hidden" name="productID" value="<?= $producto['id'] ?>">
-                  <button class="btn btn-primary w-100" type="submit">
-                    Agregar al carrito
-                  </button>
-                </form>
+                <form action="<?= base_url('/agregar-carrito') ?>" method="post" class="d-flex">
+                <?= csrf_field() ?>
+                <!-- id del producto -->
+                <input type="hidden" name="id" value="<?= $producto['id'] ?>">
+                <!-- nombre del producto -->
+                <input type="hidden" name="name" value="<?= esc($producto['nombre']) ?>">
+                <!-- precio del producto -->
+                <input type="hidden" name="price" value="<?= $producto['precio'] ?>">
+                <!-- categoría (para redirección opcional) -->
+                <input type="hidden" name="categoriaID" value="<?= $producto['categoriaID'] ?>">
+                <!-- cantidad (opcional, si no lo envías el controlador lo pone en 1) -->
+                <input type="hidden" name="qty" value="1">
+
+                <button class="btn btn-primary w-100" type="submit">
+                  Agregar al carrito
+                </button>
+              </form>
+
               <?php else: ?>
                 <button class="btn btn-secondary w-100" disabled>
                   Sin stock

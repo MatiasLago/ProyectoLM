@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 class Users extends Model{
     protected $table = 'user';
     protected $primaryKey = 'userID';
-    protected $allowedFields = ['nombre', 'apellido', 'mail', 'usuario', 'perfilID', 'baja','password','loggedIn'];
+    protected $allowedFields = ['nombre', 'apellido', 'mail', 'usuario', 'perfilID', 'baja','password','loggedIn', 'direccion','ciudad','provincia','codpostal','tarjeta'];
 
     public function marcarComoBaja($id)
     {
