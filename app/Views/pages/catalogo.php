@@ -8,7 +8,28 @@ Catálogo
 
 <div class="container">
   <h1 class="mb-4">Catálogo de productos</h1>
-  
+   <!-- Barra de búsqueda centrada tipo Cetrogar -->
+<div class="container mt-4">
+  <form class="d-flex justify-content-center" action="<?= base_url('/buscar') ?>" method="get" role="search" style="max-width: 700px; margin: 0 auto;">
+    <div class="input-group w-100 shadow-sm">
+      <input
+        type="search"
+        name="q"
+        class="form-control border-end-0"
+        placeholder="¿Qué estás buscando?"
+        aria-label="Buscar"
+        style="border-radius: 30px 0 0 30px; padding-left: 20px;"
+      >
+      <button
+        class="btn btn-primary"
+        type="submit"
+        style="border-radius: 0 30px 30px 0;"
+      >
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </form>
+</div>
   <div class="mb-4">
   <a href="<?= base_url('catalogo') ?>" class="btn btn-outline-dark">Todos</a>
   <a href="<?= base_url('catalogo/categoria/1') ?>" class="btn btn-outline-primary">Paneles</a>

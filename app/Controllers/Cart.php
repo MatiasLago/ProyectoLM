@@ -41,6 +41,19 @@ class Cart extends BaseController
         echo view('partials/footer');
     }
 
+      public function buscar()
+{
+    $q = $this->request->getGet('q');
+    $productosModel = new \App\Models\Productos();
+
+    $data['productos'] = $productosModel
+        ->like('nombre', $q)
+        ->orLike('descripcion', $q)
+        ->findAll();
+
+    return view('pages/catalogo', $data);
+}
+
     public function add()
         {
             $request = \Config\Services::request();

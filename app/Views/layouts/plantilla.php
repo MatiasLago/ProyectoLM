@@ -14,6 +14,8 @@
 
   <?= view('partials/header') ?>
 
+  
+
   <main class="container mt-5">
     <?= $this->renderSection('content') ?>
   </main>

@@ -4,7 +4,28 @@ Listado de Usuarios
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-
+ <!-- Barra de búsqueda centrada tipo Cetrogar -->
+<div class="container mt-4">
+  <form class="d-flex justify-content-center" action="<?= base_url('/buscar') ?>" method="get" role="search" style="max-width: 700px; margin: 0 auto;">
+    <div class="input-group w-100 shadow-sm">
+      <input
+        type="search"
+        name="q"
+        class="form-control border-end-0"
+        placeholder="¿Qué estás buscando?"
+        aria-label="Buscar"
+        style="border-radius: 30px 0 0 30px; padding-left: 20px;"
+      >
+      <button
+        class="btn btn-primary"
+        type="submit"
+        style="border-radius: 0 30px 30px 0;"
+      >
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </form>
+</div>
 <div class="fondo-gestores">
   <div class="profile-list-container">
     <h2 class="profile-list-title">Listado de Usuarios</h2>

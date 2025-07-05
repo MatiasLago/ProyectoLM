@@ -25,6 +25,7 @@ $routes->get('/terminos', 'Home::terminos');
 $routes->get('/productos', 'Home::productos');
 $routes->get('/Construccion', 'Home::Construccion');
 $routes->get('/signup', 'Home::signup');
+$routes->get('/buscar', 'Cart::buscar');
 
 //  Autenticación (Login y Registro)
 $routes->get('/login', 'LoginController::index');
@@ -62,13 +63,15 @@ $routes->post('/update-prod', 'Producto_controller::updateProducto', ['filter' =
 $routes->get('/producto/baja/(:num)', 'Producto_controller::bajaP/$1', ['filter' => 'authUser']);
 $routes->get('/producto/alta/(:num)', 'Producto_controller::altaP/$1', ['filter' => 'authUser']);
 $routes->get('/producto/eliminar/(:num)', 'Producto_controller::deleteP/$1', ['filter' => 'authUser']);
-$routes->get('/catalogo/categoria/(:num)', 'Home::catalogoPorCategoria/$1');
+$routes->get('/buscarProd', 'Producto_controller::buscarProd', ['filter' => 'authUser']);
 
 //Gestion Admin
 $routes->get('/listadoP', 'Producto_controller::listadoP_index',['filter' => 'authAdmin']);
 $routes->get('/listadoPerfiles', 'Usuario_controller::listadoPerfiles_index',['filter' => 'authAdmin'] );
 $routes->get('/listadodeventas', 'Orders::index',['filter' => 'authAdmin'] );
 $routes->get('/listadoenvios', 'Envios::index',['filter' => 'authAdmin'] );
+$routes->get('/listadoP', 'Producto_controller::buscarProd', ['filter' => 'authAdmin']);
+
 
 // Gestion Productos
 $routes->get('/agregarProducto', 'Producto_controller::agregar_producto', ['filter' => 'authAdmin']);
@@ -87,6 +90,8 @@ $routes->get('/eliminarUsuario/(:num)', 'Usuario_controller::eliminarUsuario/$1'
 $routes->get('/bajaUsuario/(:num)', 'Usuario_controller::bajaUsuario/$1', ['filter' => 'authAdmin']);
 $routes->get('/altaUsuario/(:num)', 'Usuario_controller::altaUsuario/$1', ['filter' => 'authUser']);
 $routes->get('/editarUsuario/(:num)', 'Usuario_controller::editarUsuario/$1', ['filter' => 'authAdmin']);
+$routes->get('/buscar-usuario', 'Usuario_controller::buscarUsuario',  ['filter' => 'authAdmin']);
+
 
 //  Consultas
 $routes->get('/consultas', 'Consultas::listar_consultas', ['filter' => 'authAdmin']);

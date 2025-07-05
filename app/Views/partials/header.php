@@ -12,8 +12,7 @@
       <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
         <div class="navbar-nav">
           <a class="nav-link" href="<?= base_url('/catalogo') ?>">Catálogo</a>
-          <a class="nav-link" href="<?= base_url('/contacto') ?>">Contacto</a>
-          <a class="nav-link" href="<?= base_url('/nosotros') ?>">Nosotros</a>
+          
         </div>
 
         <div class="navbar-nav">

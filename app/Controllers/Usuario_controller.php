@@ -53,7 +53,21 @@ class Usuario_controller extends BaseController
         echo view('Usuarios/editarUsuario', $data);    
         echo view('partials/footer');
     }
-    
+        public function buscarUsuario()
+{
+    $query = $this->request->getGet('q');
+
+    $userModel = new \App\Models\Users(); // Asegurate de que el modelo exista
+
+    $data['titulo'] = 'Resultados de Búsqueda de Usuarios';
+    $data['users'] = $userModel
+        ->like('nombre', $query)
+        ->orLike('apellido', $query)
+        ->findAll();
+
+    return view('pages/listado_usuarios', $data); // Asegurate de tener esta vista
+}
+
     
     public function updateUsuario()
     {

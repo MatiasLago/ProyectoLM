@@ -5,7 +5,27 @@ Listado de Productos
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-
+<div class="container mt-4">
+  <form class="d-flex justify-content-center" action="<?= base_url('/buscarProd') ?>" method="get" role="search" style="max-width: 700px; margin: 0 auto;">
+    <div class="input-group w-100 shadow-sm">
+      <input
+        type="search"
+        name="q"
+        class="form-control border-end-0"
+        placeholder="¿Qué estás buscando?"
+        aria-label="Buscar"
+        style="border-radius: 30px 0 0 30px; padding-left: 20px;"
+      >
+      <button
+        class="btn btn-primary"
+        type="submit"
+        style="border-radius: 0 30px 30px 0;"
+      >
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </form>
+</div>
 <div class="d-flex justify-content-end mb-3">
     <a href="<?= base_url('agregarProducto') ?>" class="btn btn-success">
         <i class="fa fa-plus"></i> Agregar Producto

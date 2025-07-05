@@ -25,7 +25,19 @@ class Producto_controller extends BaseController{
        
     }
 
-   
+     
+     public function buscarProd()
+{
+    $q = $this->request->getGet('q');
+    $productosModel = new \App\Models\Productos();
+
+    $data['productos'] = $productosModel
+        ->like('nombre', $q)
+        ->orLike('descripcion', $q)
+        ->findAll();
+
+    return view('pages/listadoP', $data);
+}
     public function agregar_producto() {
         helper(['form', 'url']);
         $session = session();
